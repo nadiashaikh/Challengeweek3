@@ -1,2 +1,10 @@
 Pwd
-mkdir Challen
+mkdir Challenheweek3
+cd Challengeweek3/
+git clone https://gitlab.com/qacdevops/nbs-challenge-3.git
+cd nbs-challenge-3
+git init
+git remove add origin https://github.com/nadiashaikh/Challengeweek3.git
+git add .
+git commit -m "First Commit"
+git push -u origin main
