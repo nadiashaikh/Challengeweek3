@@ -8,3 +8,56 @@ git remove add origin https://github.com/nadiashaikh/Challengeweek3.git
 git add .
 git commit -m "First Commit"
 git push -u origin main
+touch jenkinsfile 
+vim jenkinesfile
+ pipeline {
+     agent any 
+      stages {
+        stage ('Build Image'){
+            Steps {
+             sh "./scripts/build.sh" 
+            }
+        }
+        stages {
+          stage ('Run Containers'){
+             Steps {
+              sh "./scripts/run.sh"
+             }
+          }
+        }
+
+      }
+ 
+ }
+ mkdir scripts
+ cd scripts/
+ touch build.sh 
+ touch run.sh
+ vim build.sh
+ #! /bin/bash
+ sudo docker-compose build
+ :wq
+ vim run.sh
+ #! /bin/bash
+ sudo docker-compose up -d
+ :wq
+ chmod +x build.sh
+ chmod +x run.sh
+ cd ..
+ git add .
+ git commit -m "Added script and jenkinsfile"
+ git push -u origin main
+ 
+ refresh github 
+ now go to jenkins and creat a new item 
+ add name jenkinsfile 
+ pipeline job ok
+ save 
+ define - pipeline script from scm
+ scm to git
+ repositories to git repo url
+ * main
+ script path is jenkinsfile
+ save 
+ build now
+ see stage view.
